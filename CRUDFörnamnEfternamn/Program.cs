@@ -29,6 +29,7 @@ namespace CRUDFörnamnEfternamn
                 if ( choice == 0 )
                 {
                     Console.WriteLine("•AddCustomer");
+                    conn.SendCommand();
                 }
                 else if ( choice == 1 )
                 {

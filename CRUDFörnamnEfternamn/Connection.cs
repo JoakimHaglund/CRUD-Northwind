@@ -12,10 +12,10 @@ namespace CRUDFörnamnEfternamn
     {
         public string Conn { get; set; }
 
-        public Connection(string server, string database) 
+        public Connection(string server, string database)
         {
             //SQLEXPRESS
-            Conn = $"Server=.\\{server}; Database={database}; Integrated Security=true";
+            Conn = $"Server=.\\{server}; Database={database}; Integrated Security=true; TrustServerCertificate=True";
         }
         public void SendCommand()
         {
@@ -30,6 +30,14 @@ namespace CRUDFörnamnEfternamn
                 "Employees count: {0} ", employeesCount);
             }
         }
-     
+        public void AddCustomer()
+        {
+
+        }
+        public void DeleteCustomer() { }
+        public void UpdateEmployeeAdress() { }
+        public void ShowSelectedCountrySales() { }
+        public void AddOrder() { }
+
     }
 }
