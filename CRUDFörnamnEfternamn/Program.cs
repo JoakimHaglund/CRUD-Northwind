@@ -1,25 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
+using static CRUDFörnamnEfternamn.Connection;
 namespace CRUDFörnamnEfternamn
 {
+    
     internal class Program
     {
         static void Main(string[] args)
         {
-            ShowMenu("Sup", new List<string>
+            Connection conn = new Connection("SQLEXPRESS","Northwind2023_Joakim_Haglund_Malm");
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            while (true)
+            {
+
+                int choice = ShowMenu("Sup", new List<string>
+                    {
+                    "•AddCustomer",
+                    "•DeleteCustomer",
+                    "•UpdateEmployee",
+                    "•ShowCountrySales",
+                    "•ny order",
+                    "•avsluta"
+                    }
+                );
+                Console.Clear();
+                if ( choice == 0 )
                 {
-                "•AddCustomer",
-                "•DeleteCustomer",
-                "•UpdateEmployee",
-                "•ShowCountrySales" 
+                    Console.WriteLine("•AddCustomer");
                 }
-            );
+                else if ( choice == 1 )
+                {
+                    Console.WriteLine("•DeleteCustomer");
+                }
+                else if( choice == 2 )
+                {
+                    Console.WriteLine("•UpdateEmployee");
+                }
+                else if (choice == 3)
+                {
+                    Console.WriteLine("•ShowCountrySales");
+                }
+                else if (choice == 4)
+                {
+                    Console.WriteLine("•ny order");
+                }
+                else
+                {
+                    break;
+                }
+
+            }
         }
         public static int ShowMenu(string prompt, IEnumerable<string> options)
         {
