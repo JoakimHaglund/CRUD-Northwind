@@ -180,6 +180,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandBuilder.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="Customer.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

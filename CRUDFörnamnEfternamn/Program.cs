@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 using static CRUDFörnamnEfternamn.Connection;
@@ -12,6 +13,7 @@ namespace CRUDFörnamnEfternamn
         {
             Connection conn = new Connection("SQLEXPRESS","Northwind2023_Joakim_Haglund_Malm");
             Console.OutputEncoding = System.Text.Encoding.UTF8;
+            var customer = new Customer("SQLEXPRESS", "Northwind2023_Joakim_Haglund_Malm");
             while (true)
             {
 
@@ -25,11 +27,31 @@ namespace CRUDFörnamnEfternamn
                     "•avsluta"
                     }
                 );
-                Console.Clear();
+               // Console.Clear();
                 if ( choice == 0 )
                 {
+                    Dictionary<string, string> ColumNameValue = new Dictionary<string, string> 
+                    {
+                        {"CustomerID"   , "fucks"},
+                        {"CompanyName"  , "this shits"},
+                        { "ContactName" , null},
+                        {"ContactTitle" , null},
+                        {"Address"      , null},
+                        {"City"         , "hell"},
+                        {"Region"       , null},
+                        {"PostalCode"   , null},
+                        {"Country"      , null},
+                        {"Phone"        , null},
+                        {"Fax"          , null}
+                    };
+
                     Console.WriteLine("•AddCustomer");
-                    conn.SendCommand();
+                    conn.SendCommand("SELECT COUNT(*) FROM Employees");
+                    var cmdb = new CommandBuilder();
+                
+                    Console.WriteLine(cmdb.BuildCommand(CommandBuilder.Action.SELECT, "Customers", ColumNameValue));
+                    string str = cmdb.BuildCommand(CommandBuilder.Action.INSERT, "Customers", ColumNameValue);
+                    Console.WriteLine();
                 }
                 else if ( choice == 1 )
                 {
