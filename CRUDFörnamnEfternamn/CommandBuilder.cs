@@ -53,7 +53,7 @@ namespace CRUDFörnamnEfternamn
             output = output.Remove(output.Length - 1, 1);
             return output;
         }
-        private string CreateInsert(string table, Dictionary<string, string> columNameValue)
+        private string CreateInsert(string table, Dictionary<string, string> columNameValue, bool asParams = false)
         {
             string output = string.Empty;
             List<string> columns = new List<string>();
@@ -63,10 +63,16 @@ namespace CRUDFörnamnEfternamn
                 if (item.Value != null)
                 {
                     columns.Add(item.Key);
-                    values.Add(item.Value);
+                    if (asParams)
+                    {
+                        values.Add("@" + item.Key.Substring(0, 1).ToLower() + item.Key.Substring(1));
+                    }
+                    else
+                    {
+                        values.Add(item.Value);
+                    }
                 }
             }
-            output = $"INSERT INTO {table} (";
             output = $"INSERT INTO {table} ({string.Join(", ", columns)}) VALUES('{string.Join("', '", values)}')";
             output = output.Trim();
             return output;
