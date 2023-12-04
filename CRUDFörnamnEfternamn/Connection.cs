@@ -37,33 +37,7 @@ namespace CRUDFörnamnEfternamn
                 return output;
             }
         }
-        public void AddCustomer(Customer customer)
-        {
-            SqlConnection dbCon = new SqlConnection(Conn);
-            dbCon.Open();
-            using (dbCon)
-            {
-
-              /*  SqlCommand cmd = new SqlCommand(
-               "INSERT INTO Customers (CustomerID, CompanyName, ContactName, ContactTitle, Address, City, Region, PostalCode, Country, Phone, Fax)" +
-               "VALUES(@customerID, @companyName, @contactName, @contactTitle, @address, @city, @region, @postalCode, @country, @phone, @fax)", dbCon);
-                cmd.Parameters.AddWithValue("@customerID", customerID);
-                cmd.Parameters.AddWithValue("@companyName", companyName);
-                cmd.Parameters.AddWithValue("@contactName", contactName);
-                cmd.Parameters.AddWithValue("@contactTitle", contactTitle);
-                cmd.Parameters.AddWithValue("@address", address);
-                cmd.Parameters.AddWithValue("@city", city);
-                cmd.Parameters.AddWithValue("@region", region);
-                cmd.Parameters.AddWithValue("@postalCode", postalCode);
-                cmd.Parameters.AddWithValue("@country", country);
-                cmd.Parameters.AddWithValue("@phone", phone);
-                cmd.Parameters.AddWithValue("@fax", fax);
-                dbCon.Open();
-                cmd.ExecuteNonQuery();
-                dbCon.Close();*/
-
-            }
-        }
+       
         public void DeleteCustomer() { }
         public void UpdateEmployeeAdress() { }
         public void ShowSelectedCountrySales() { }
