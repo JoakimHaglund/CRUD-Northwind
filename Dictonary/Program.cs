@@ -12,19 +12,22 @@ namespace Dictonary
     {
         static void Main(string[] args)
         {
-            Dictionary<string, string> test = new Dictionary<string, string>();
-            test.Add("@hello", "World");
-            test.Add("hellWorld", "Worl");
-            test.Add("hel", "Wor");
-            test.Add("he", "Wo");
-            foreach (var item in test) 
-            { 
-                Console.WriteLine(item.Key +" "+item.Value);
-                //Console.WriteLine(item.Key.);
-            }
-            Console.WriteLine(useRegex("DeleteCustomer"));
-            Console.WriteLine();
-            Console.WriteLine(GetColums(test));
+            /*  Dictionary<string, string> test = new Dictionary<string, string>();
+              test.Add("@hello", "World");
+              test.Add("hellWorld", "Worl");
+              test.Add("hel", "Wor");
+              test.Add("he", "Wo");
+              foreach (var item in test) 
+              { 
+                  Console.WriteLine(item.Key +" "+item.Value);
+                  //Console.WriteLine(item.Key.);
+              }
+              Console.WriteLine(useRegex("DeleteCustomer"));
+              Console.WriteLine();
+              Console.WriteLine(GetColums(test));*/
+            string str = "HelloWorld";
+            str = "@" + str.Substring(0, 1).ToLower() + str.Substring(1);
+            Console.WriteLine(  str);
 
         }
         private static string GetColums(Dictionary<string, string> columNameValue)
