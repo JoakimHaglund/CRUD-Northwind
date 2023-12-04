@@ -13,7 +13,7 @@ namespace CRUDFörnamnEfternamn
         {
             Connection conn = new Connection("SQLEXPRESS","Northwind2023_Joakim_Haglund_Malm");
             Console.OutputEncoding = System.Text.Encoding.UTF8;
-            var customer = new Customer("SQLEXPRESS", "Northwind2023_Joakim_Haglund_Malm");
+            var customer = new Customer("SQLEXPRESS", "Northwind2023_Joakim_Haglund_Malm", "Customers");
             while (true)
             {
 
