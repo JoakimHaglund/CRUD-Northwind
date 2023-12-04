@@ -21,5 +21,18 @@ namespace CRUDFörnamnEfternamn
             Console.WriteLine();
         }
 
+        public void GetValuesFromUser()
+        {
+            foreach(KeyValuePair<string, string> colum in ColumNameValue)
+            {
+                Console.Write($"Please enter a {colum.Key}: ");
+                string value = Console.ReadLine();
+                if (value != null)
+                {
+                    ColumNameValue[colum.Key] = value;
+                }
+            }
+        } 
+
     }
 }

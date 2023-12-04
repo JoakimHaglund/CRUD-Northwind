@@ -52,6 +52,9 @@ namespace CRUDFörnamnEfternamn
                     Console.WriteLine(cmdb.BuildCommand(CommandBuilder.Action.SELECT, "Customers", ColumNameValue));
                     string str = cmdb.BuildCommand(CommandBuilder.Action.INSERT, "Customers", ColumNameValue);
                     Console.WriteLine();
+                    customer.GetValuesFromUser();
+                    str = cmdb.BuildCommand(CommandBuilder.Action.INSERT, "Customers", customer.ColumNameValue);
+                    Console.WriteLine();
                 }
                 else if ( choice == 1 )
                 {
