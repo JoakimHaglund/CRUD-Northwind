@@ -16,7 +16,6 @@ namespace CRUDFörnamnEfternamn
             var customer = new Customer("SQLEXPRESS", "Northwind2023_Joakim_Haglund_Malm", "Customers");
             while (true)
             {
-
                 int choice = ShowMenu("Sup", new List<string>
                     {
                     "•AddCustomer",
@@ -30,39 +29,21 @@ namespace CRUDFörnamnEfternamn
                // Console.Clear();
                 if ( choice == 0 )
                 {
-                    Dictionary<string, string> ColumNameValue = new Dictionary<string, string> 
-                    {
-                        {"CustomerID"   , "fucks"},
-                        {"CompanyName"  , "this shits"},
-                        { "ContactName" , null},
-                        {"ContactTitle" , null},
-                        {"Address"      , null},
-                        {"City"         , "hell"},
-                        {"Region"       , null},
-                        {"PostalCode"   , null},
-                        {"Country"      , null},
-                        {"Phone"        , null},
-                        {"Fax"          , null}
-                    };
-
-                    Console.WriteLine("•AddCustomer");
-                    conn.SendCommand("SELECT COUNT(*) FROM Employees");
                     var cmdb = new CommandBuilder();
-                
-                    Console.WriteLine(cmdb.BuildCommand(CommandBuilder.Action.SELECT, "Customers", ColumNameValue));
-                    string str = cmdb.BuildCommand(CommandBuilder.Action.INSERT, "Customers", ColumNameValue);
-                    Console.WriteLine();
                     customer.GetValuesFromUser();
-                    str = cmdb.BuildCommand(CommandBuilder.Action.INSERT, "Customers", customer.ColumNameValue);
+                    customer.AddCustomer();
+
                     Console.WriteLine();
                 }
                 else if ( choice == 1 )
                 {
-                    Console.WriteLine("•DeleteCustomer");
+                    conn.DeleteCustomer();
                 }
                 else if( choice == 2 )
                 {
                     Console.WriteLine("•UpdateEmployee");
+                    Console.WriteLine(conn.SendCommand($"INSERT INTO Orders(CustomerID) VALUES('fuck')"));
+                    Console.ReadLine();
                 }
                 else if (choice == 3)
                 {
@@ -70,7 +51,10 @@ namespace CRUDFörnamnEfternamn
                 }
                 else if (choice == 4)
                 {
+                    Console.Clear();
                     Console.WriteLine("•ny order");
+                    var products = conn.RetriveListFormDB("Select ProductName from Products");
+                    int h = ShowMenu("Test", products);
                 }
                 else
                 {
@@ -78,6 +62,13 @@ namespace CRUDFörnamnEfternamn
                 }
 
             }
+        }
+
+        public static void AddOrder(Connection conn)
+        {
+            Console.WriteLine("•ny order");
+            var products = conn.RetriveListFormDB("Select ProductName from Products");
+            int h = ShowMenu("Test", products);
         }
         public static int ShowMenu(string prompt, IEnumerable<string> options)
         {

@@ -18,7 +18,7 @@ namespace CRUDFörnamnEfternamn
         public Customer(string server, string database, string table) :base(server, database) 
         {
             Table = table;
-            List<string> columNames = SendCommand($"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE table_name = '{table}'");
+            List<string> columNames = GetColumNamesFromTable(table);
             foreach (string columName in columNames)
             {
                 ColumNameValue.Add(columName, null);
@@ -33,16 +33,14 @@ namespace CRUDFörnamnEfternamn
             {
                 Console.Write($"Please enter a {key}: ");
                 string value = Console.ReadLine();
-                if (value != null)
+                if(string.IsNullOrEmpty(value))
                 {
-                    ColumNameValue[key] = value;
+                    value = null;
                 }
-               
-           
-                
+                ColumNameValue[key] = value;
             }
         }
-        public void AddCustomer(Customer customer)
+        public void AddCustomer()
         {
             SqlConnection dbCon = new SqlConnection(Conn);
             dbCon.Open();
@@ -58,10 +56,7 @@ namespace CRUDFörnamnEfternamn
                         cmd.Parameters.AddWithValue(param, item.Value);
                     }
                 }
-                dbCon.Open();
                 cmd.ExecuteNonQuery();
-                dbCon.Close();
-
             }
         }
 
